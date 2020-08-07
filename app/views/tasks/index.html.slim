@@ -1,6 +1,16 @@
-h1
-  | Tasks#index
-p
-  | Find me in app/views/tasks/index.html.erb
+h1 タスク一覧ページ
 
-= link_to "LINE Login", user_line_omniauth_authorize_path
+table.table.table-hover
+  tr
+    th タスク名
+    th
+    th
+  - @tasks.each do |task|
+    tr
+      td = task.name
+      td = task.description
+      td
+        = link_to "編集", edit_task_path(task), class: "btn btn-primary mr-2"
+        = link_to "削除", task, method: :delete, class: "btn btn-danger"
+
+= link_to "タスク新規登録", new_task_path, class: "btn btn-primary"
