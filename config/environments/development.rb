@@ -62,4 +62,7 @@ Rails.application.configure do
 
   # setting mailer(devise用)
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # ngrok起動ページがブロックされないようにする
+  config.hosts << '.ngrok.io'
 end

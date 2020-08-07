@@ -55,3 +55,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-line'
+
+gem 'slim-rails'
+gem 'html2slim'
