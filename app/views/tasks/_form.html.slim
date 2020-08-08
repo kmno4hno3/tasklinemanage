@@ -1,0 +1,13 @@
+- if task.errors.present?
+  ul#error_explanation
+    - task.errors.full_messages.each do |message|
+      li.alert.alert-danger = message
+
+= form_with model: task, local: true do |f|
+  .form-group
+    = f.label :name,  "タスクタイトル"
+    = f.text_field :name , class: 'form-control'
+  .form-group
+    = f.label :description, "詳しい説明"
+    = f.text_area :description , class: 'form-control'
+  = f.submit '登録', class: 'btn btn-primary'

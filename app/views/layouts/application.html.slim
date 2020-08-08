@@ -10,14 +10,16 @@ html
     = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    .navar.navbar-expand-sm.navbar-dark.bg-dark
-      a.navbar-brand = "タスクLINEマネージャー"
+    .navar.navbar-expand-sm.navbar-dark.bg-dark.mb-3
       .collapse.navbar-collapse
+        a.navbar-brand = "タスクLINEマネージャー"
         ul.navbar-nav
           a.nav-item.nav-link = link_to "タスク一覧", tasks_path
           a.nav-item.nav-link = link_to "新規登録", new_user_registration_path
           a.nav-item.nav-link = link_to "Lineログイン", user_line_omniauth_authorize_path
 
-    p.notice = notice
-    p.alert = alert
-    = yield
+    .container
+      - if flash.notice.present?
+        p.alert.alert-success = flash.notice
+          
+      = yield

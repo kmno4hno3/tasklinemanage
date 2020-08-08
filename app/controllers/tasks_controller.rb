@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: [:edit, :show, :destroy]
+
   def index
     @tasks = Task.all
   end
@@ -11,25 +13,30 @@ class TasksController < ApplicationController
   end
 
   def create
-    logger.debug("~~~~~~~~~")
-    logger.debug(task_params)
-    logger.debug("~~~~~~~~~")
-    task = Task.new(task_params)
-    task.save!
-    redirect_to tasks_url
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to tasks_url
+    else
+      render :new
+    end
   end
 
   def show
   end
 
   def destroy
-
+    @task.destroy
+    redirect_to tasks_url, notice: "タスク#{@task.name}を削除しました。"
   end
 
   private
 
   def task_params
     params.require(:task).permit(:name, :description)
+  end
+
+  def set_task
+    @task = Task.find(params[:id])
   end
 
 

@@ -3,12 +3,14 @@ h1 タスク一覧ページ
 table.table.table-hover
   tr
     th タスク名
-    th
+    th 作成日
+    th 更新日
     th
   - @tasks.each do |task|
     tr
-      td = task.name
-      td = task.description
+      td = link_to task.name, task_path(task)
+      td = task.created_at
+      td = task.updated_at
       td
         = link_to "編集", edit_task_path(task), class: "btn btn-primary mr-2"
         = link_to "削除", task, method: :delete, class: "btn btn-danger"

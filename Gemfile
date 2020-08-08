@@ -60,3 +60,5 @@ gem 'omniauth-line'
 
 gem 'slim-rails'
 gem 'html2slim'
+
+gem 'rails-i18n'
